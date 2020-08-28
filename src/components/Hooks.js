@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ThemeContext, LocaleContext } from '../contexts/GlobalContext';
 
 // https://reactjs.org/docs/hooks-intro.html
@@ -10,6 +10,10 @@ export default function Hooks(props) {
   // Declare a new state variable, which we'll call "name"
   const [name, setName] = useState('Thanh');
   const [surname, setSurname] = useState('Nguyen');
+
+  useEffect(() => {
+    document.title = name + ' ' + surname;
+  });
 
   function handleNameChange(e) {
     setName(e.target.value);

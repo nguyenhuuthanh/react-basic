@@ -31,6 +31,18 @@ class ComponentState extends React.Component {
     });
   }
 
+  componentDidMount() {
+    console.log('Did Mount');
+  }
+
+  componentWillUnmount() {
+    console.log('Will Unmount');
+  }
+
+  componentDidUpdate() {
+    document.title = this.state.name + ' ' + this.state.surname;
+  }
+
   render() {
     return (
       <ThemeContext.Consumer>
