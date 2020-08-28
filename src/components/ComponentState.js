@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeContext, LocaleContext } from '../contexts/GlobalContext';
 
 class ComponentState extends React.Component {
   constructor(props) {
@@ -32,20 +33,31 @@ class ComponentState extends React.Component {
 
   render() {
     return (
-      <section>
-        <h1>Hello, Components and Props</h1>
-        <h2>Now it is {this.state.date.toLocaleDateString()}.</h2>
-        <input
-          value = {this.state.name}
-          onChange = {this.handleChangeName}
-        />
-        <section>
-          <input
-            value = {this.state.surname}
-            onChange = {this.handleChangeSurname}
-          />
-        </section>
-      </section>
+      <ThemeContext.Consumer>
+        {theme => (
+          <section className={theme}>
+            <h1>Hello, Components and Props</h1>
+            <h2>Now it is {this.state.date.toLocaleDateString()}.</h2>
+            <input
+              value = {this.state.name}
+              onChange = {this.handleChangeName}
+            />
+            <section>
+              <input
+                value = {this.state.surname}
+                onChange = {this.handleChangeSurname}
+              />
+            </section>
+            <LocaleContext.Consumer>
+              {locale => (
+                <section>
+                  Language: {locale}
+                </section>
+              )}
+            </LocaleContext.Consumer>
+          </section>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 }

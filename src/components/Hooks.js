@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ThemeContext, LocaleContext } from '../contexts/GlobalContext';
 
 // https://reactjs.org/docs/hooks-intro.html
 export default function Hooks(props) {
+  // Get the context
+  const theme = useContext(ThemeContext);
+  const locale = useContext(LocaleContext);
+
   // Declare a new state variable, which we'll call "name"
   const [name, setName] = useState('Thanh');
   const [surname, setSurname] = useState('Nguyen');
@@ -15,7 +20,7 @@ export default function Hooks(props) {
   }
 
   return (
-    <div>
+    <div className={theme}>
       <section>
         <label>Name</label>
         <input
@@ -29,6 +34,9 @@ export default function Hooks(props) {
           value={surname}
           onChange={handleSurnameChange}
         />
+      </section>
+      <section className="languages">
+        Languages: {locale}
       </section>
     </div>
   );
