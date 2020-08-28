@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from "react";
 
-class Hooks extends React.Component {
-  render() {
-    return <h1>Hello, Hooks</h1>
+// https://reactjs.org/docs/hooks-intro.html
+export default function Hooks(props) {
+  // Declare a new state variable, which we'll call "name"
+  const [name, setName] = useState("ThanhNguyen");
+
+  function handleNameChange(e) {
+    setName(e.target.value);
   }
-}
 
-export default Hooks;
+  return (
+    <section>
+      <label>Name</label>
+      <input
+        value={name}
+        onChange={handleNameChange}
+      />
+    </section>
+  );
+}
