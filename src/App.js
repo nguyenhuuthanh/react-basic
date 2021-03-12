@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./Header";
 import TinderCards from "./TinderCards";
 import SwipeButtons from "./SwipeButtons";
+import ChatScreen from './ChatScreen';
+import Chats from './Chats';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,18 +15,24 @@ import {
 function App() {
   return (
     <div className="app">
-      <Header />
-      <Router>
+      <Router> 
         <Switch>
+        <Route path="/chat/:person">
+           <Header backButton="/chat" />
+            <ChatScreen/>
+            {/* <h3> it works </h3> */}
+          </Route>
           <Route path="/chat">
-            <h1>I am the chat page</h1>
+           <Header backButton="/" />
+            <Chats/>
           </Route>
           <Route path="/">
-            <TinderCards />
+            <Header />
+              <TinderCards/>
+              <SwipeButtons/>
           </Route>
         </Switch>
       </Router>
-      <SwipeButtons />
     </div>
   );
 }
